@@ -1,0 +1,39 @@
+Guía de instalación de la Inteligencia Artificial:
+
+1. Descargar python en tu pc, añadirla como variable de entorno. 
+   Link: https://www.youtube.com/watch?v=xd_0RN2SyfI (https://www.python.org/)
+
+2. Abrir la terminal de visual studio code.
+
+3. actualizar pip:
+   python.exe -m pip install --upgrade pip
+
+4. Instalar la libreria flask en la terminal con:
+   pip install flask   
+
+5. Corroboramos que se instalo correctamente con el comando:
+   pip show flask
+
+6. Instalar la libreria de OpenCV con:
+   pip install opencv-python
+
+7. Instalar libreria de tesseract:
+   pip install pytesseract
+
+8. Instalar libreria de numpy
+   pip install numpy
+
+9. Revisar la lista de paquetes:
+   pip list
+
+10. Descargar Tesseract en tu pc:
+   Link: https://www.youtube.com/watch?v=_j6o2rBkhhg (https://github.com/UB-Mannheim/tesseract/wiki)
+
+11. Instalar flask CORS: 
+   pip install flask-cors
+
+12. Corremos el servidor (la pagina web) con el comando:
+   python test2.py (la pagina se abrira en la ruta 127.0.0.1:5000)
+
+*NEW
+   python IAController.py

@@ -1,0 +1,8 @@
+# Ignorar archivos específicos
+test1.py
+test2Original.py
+
+# Ignorar carpetas específicas
+__pycache__/
+templates/
+uploads/
