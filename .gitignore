@@ -1,6 +1,7 @@
 # Ignorar archivos específicos
 test1.py
 test2Original.py
+Respaldo_Modular_IA.py
 
 # Ignorar carpetas específicas
 __pycache__/

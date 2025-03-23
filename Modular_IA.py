@@ -4,6 +4,9 @@ import re
 import os
 import numpy as np
 
+import re
+import unicodedata
+
 # Configurar Tesseract
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -58,12 +61,29 @@ def busqueda_codigo_relajado(codigo, texto):
     codigo_normalizado = re.sub(r'\D', '', codigo)
     return codigo_normalizado in texto_normalizado
 
+#Quitar acentos de las palabras
+def quitar_acentos(texto):
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', texto) 
+        if unicodedata.category(c) != 'Mn'
+    )
+
 # Buscar texto relajado para nombre o escuela
-def busqueda_texto_relajado(busqueda, texto):
-    texto_normalizado = re.sub(r'\W+', ' ', texto.lower())
-    busqueda_normalizada = re.sub(r'\W+', ' ', busqueda.lower())
+def busqueda_texto_relajado(busqueda, texto):    
+
+    # Quitar acentos y convertir a minúsculas
+    texto = quitar_acentos(texto.lower())
+    busqueda = quitar_acentos(busqueda.lower())
+
+    # Reemplazar caracteres no alfanuméricos por espacios
+    texto_normalizado = re.sub(r'\W+', ' ', texto)
+    busqueda_normalizada = re.sub(r'\W+', ' ', busqueda)
+
+    # Crear conjuntos de palabras únicas
     palabras_texto = set(texto_normalizado.split())
     palabras_busqueda = set(busqueda_normalizada.split())
+
+    # Retornar True si todas las palabras de la búsqueda están en el texto
     return palabras_busqueda.issubset(palabras_texto)
 
 def validar_estudiante_por_campos_separados(registros, texto1, texto2):
